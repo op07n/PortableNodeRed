@@ -15,12 +15,12 @@ install:
   - cmd: electron-packager . PortableNodeRed --overwrite --asar --platform=win32 --arch=ia32 --prune=true --out=release-builds 
 
 build_script:
-  - dir
+  - tree /F
 
 
   
 after_build:
-  - 7z a PortableNodeRed.zip %APPVEYOR_BUILD_FOLDER%\release-builds\PortableNodeRed-win32-ia32\*.*
+  - 7z a PortableNodeRed.zip %APPVEYOR_BUILD_FOLDER%\release-builds\PortableNodeRed-win32-ia32\ -r
 
 artifacts: 
   - path: PortableNodeRed.zip
