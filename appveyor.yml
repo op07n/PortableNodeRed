@@ -10,23 +10,24 @@ install:
   # install modules
   - npm install --unsafe-perm node-red@next
   - npm install electron@2.0.18
-  - npm install -g electron-packager  
+  - npm install -g electron-packager 
+  - npm install  
   - cmd: electron-packager . PortableNodeRed --overwrite --asar --platform=win32 --arch=ia32 --prune=true --out=release-builds 
 
 build_script:
-  - npm install
   - dir
 
 
   
 after_build:
-  - 7z a PortableNodeRed.zip %APPVEYOR_BUILD_FOLDER%\*.*
+  - 7z a PortableNodeRed.zip %APPVEYOR_BUILD_FOLDER%\release-builds\PortableNodeRed-win32-ia32\*.*
 
 artifacts: 
   - path: PortableNodeRed.zip
     name: artifacts-all
+   
 
 cache:
   - node_modules
-  - '%USERPROFILE%\.electron'
+
 
