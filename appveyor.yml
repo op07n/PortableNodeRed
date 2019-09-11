@@ -1,0 +1,33 @@
+environment:
+  nodejs_version: "8"
+
+platform:
+  - x86
+  # - x64
+
+init:
+  - git config --global core.autocrlf true
+
+install:
+  # install modules
+  - npm install --unsafe-perm node-red@next
+  - npm install electron@2.0.18
+
+
+build_script:
+  - npm install
+  - dir
+
+
+  
+after_build:
+  - 7z a PortableNodeRed.zip %APPVEYOR_BUILD_FOLDER%\*.*
+
+artifacts: 
+  - path: PortableNodeRed.zip
+    name: artifacts-all
+
+cache:
+  - node_modules
+  - '%USERPROFILE%\.electron'
+
