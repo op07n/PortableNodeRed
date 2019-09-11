@@ -10,7 +10,8 @@ install:
   # install modules
   - npm install --unsafe-perm node-red@next
   - npm install electron@2.0.18
-
+  - npm install -g electron-packager  
+  - cmd: electron-packager . PortableNodeRed --overwrite --asar --platform=win32 --arch=ia32 --prune=true --out=release-builds 
 
 build_script:
   - npm install
